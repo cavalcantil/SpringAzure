@@ -1,10 +1,7 @@
-# SpringAzure
-Steps to deploy on Azure
-
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy JAR app to Azure Web App - SpringAzureApp
+name: Build and deploy JAR app to Azure Web App - SpringAzure1
 
 on:
   push:
@@ -14,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -34,12 +31,12 @@ jobs:
           path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: build
     environment:
       name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
+    
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
@@ -50,7 +47,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'SpringAzureApp'
+          app-name: 'SpringAzure1'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_eae8f3018ea149129363fee29f76b760 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_a6ea8a0d7df6493da80eb7d46bb511e5 }}
           package: '*.jar'
