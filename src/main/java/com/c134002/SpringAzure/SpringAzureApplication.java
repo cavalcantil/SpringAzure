@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class SpringAzureApplication {
-	@GetMapping("/message")
+	@GetMapping("/messages")
 	public String message(){
 		return "Congrats Leo, your app is on Azure";
 	}
